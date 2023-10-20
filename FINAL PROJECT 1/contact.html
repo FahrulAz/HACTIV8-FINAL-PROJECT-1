@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <title>Contact page</title>
+    <style>
+        :root {
+            --warna-1: #fe5b3d;
+            --warna-2:#ffac38;
+            --warna-3:#444;
+            --warna-4: linear-gradient(#fe5b3d,#ffac38);
+        }
+        * {
+            font-family: "poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-padding-top: 2rem;
+            scroll-behavior: smooth;
+            list-style: none;
+            text-decoration: none;
+        }
+        
+        /* navbar */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            display:flex;
+            align-items: center;
+            justify-content:space-between;
+            background: #fff;
+            padding: 15px 100px;
+        }
+        .logo img {
+            width: 100px;
+        }
+        .nav {
+            display:flex;
+        }
+        .nav li {
+            position: relative;  
+        }
+        .nav a {
+            font-size:1rem;
+            padding:10px 20px;
+            color: var(--warna-3);
+            font-weight:500;
+        }
+        .nav a::after {
+            content: "";
+            width:0;
+            height:3px;
+            background:var(--warna-4);
+            position: absolute;
+            bottom: -4px;
+            left:0;
+            transition:0.8s;
+        }
+        .nav a:hover::after {
+            width:100%;  
+        }
+        .nav-btn a {
+            padding:10px 20px;
+            color: var(--warna-3);
+            font-weight:500;
+        }
+        .nav-btn .sign-in {
+            background: #474fa0;
+            color:#FFF;
+            border-radius: 0.5rem;
+        }
+        .nav-btn .sign-up {
+            background:#474fa0;
+            color:#FFF;
+            border-radius: 0.5rem;
+        }
+        .nav-btn .sign-in:hover {
+            background:var(--warna-1);
+        }
+        .nav-btn .sign-up:hover {
+            background: var(--warna-1);
+        }
+
+        /* banner */
+        .banner {
+            min-height: 80vh;
+            background:url(https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2) no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+            padding-top: 8rem;
+        }
+        /* .banner .content {
+            text-align: center;
+            background:transparent;
+            border-radius: .5rem;
+            box-shadow: var(--warna-3);
+            padding:3rem;
+            max-width: 50rem;
+        }
+        .banner .content h3 {
+            font-size: 4rem;
+            color: #474fa0;
+            text-transform: uppercase;
+        } */
+        .banner .content img {
+            width: 300px;
+        }
+
+        /* contact */
+        #kontak .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap-reverse;
+        }
+        .kontak-kiri {
+            display: flex;
+            flex-basis: 50%;
+            flex-direction: column;
+        }
+        .kontak-kiri form input ,textarea {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            margin-left: 130px;
+            padding: 20px 30px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background-color: #eee;
+            font-size: 16px;
+            color: #000;
+        }
+        .kontak-kiri form input::placeholder,
+        textarea::placeholder {
+            color: #000;
+        }
+        #kontak form input[type="submit"] {
+            background-color: var(--warna-2);
+            width: fit-content;
+            font-size: 20px;
+            font-weight: 400;
+            color: #000;
+            border-radius: 10px;
+            border: 1px solid var(--warna-2);
+            transition: 0.5s, color 0.5s;
+            /* margin: 20px auto; */
+            margin-left: 480px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            padding: 8px 35px;
+        }
+        #kontak form input[type="submit"]:hover {
+            background-color: var(--warna-1);
+        }
+        .kontak-kanan {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 45%;
+        }
+        .kontak-kanan h2 {
+            font-size: 40px;
+        }
+        .kontak-kanan p {
+            font-size: 20px;
+            font-weight: 400;
+            margin-top: 8px;
+            margin-left: 125px;
+        }
+        .kontak-kanan p.icon {
+            margin-top: 10px;
+            display: inline-block;
+            width: fit-content;
+            padding: 3px 11px;
+        }
+        .kontak-kanan ul {
+            list-style: none;
+            margin-top: 5px;
+            margin-left: 125px;
+        }
+        .kontak-kanan ul li {
+            display: inline-block;
+        }
+        .kontak-kanan ul li a {
+            font-size: 40px;
+            text-decoration: none;
+            display: inline-block;
+            transition: color 0.5s transform 0.5s;
+            color: #d6d6d6;
+        }
+        .kontak-kanan ul li a:hover {
+            color: var(--warna-1);
+            transform: translateY(-8px);
+        }
+        .kontak-title {
+            color: var(--warna-1);
+            margin-top: 7px;
+            margin-left: 120px;
+            font-size: 60px;
+            font-weight: 800;
+        }
+        .kontak-title span {
+            color:var(--warna-3);
+        }
+        span.icon,
+        .icon {
+            background-color: var(--warna-2);
+            display: inline-block;
+            padding: 0 5px;
+            border-radius: 4px;
+            color: #eee;
+        }
+
+        /* footer */
+        .footer {
+            background-color: #f3e6e6;
+            flex-flow: column;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer .credit {
+            text-transform: capitalize;
+            font-size: 1.2rem;
+            color:var(--warna-3);
+            padding: 1rem 0;
+        }
+        .footer .credit span {
+            color:var(--warna-2);
+        }
+        .footer .sosmed {
+            padding: 1rem 0;
+        }
+        .footer .sosmed a {
+            text-decoration: none;
+            height:2.5rem;
+            line-height:2.5rem;
+            width:2.5rem;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            background:var(--warna-1);
+            color:#fff;
+            margin:0 .1rem;
+            text-align: center;
+        }
+        .footer .sosmed a:hover {
+            background:var(--warna-2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo"><img src="https://www.zarla.com/images/zarla-rentalyuk-1x1-2400x2400-20220805-3d337mpxyh96vj9v3gcg.png?crop=1:1,smart&width=250&dpr=2" alt=""></a>
+        <ul class="nav">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="#">Blogs</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Todos</a></li>
+        </ul>
+        <div class="nav-btn">
+            <a href="#" class="sign-up">Sign Up</a>
+            <a href="#" class="sign-in">Sign In</a>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="content">
+            <img src="https://www.zarla.com/images/zarla-rentalyuk-1x1-2400x2400-20220805-9xybqtfc48p7frd6mhmw.png?crop=1:1,smart&width=250&dpr=2">
+        </div>
+    </section>
+
+    <div id="kontak">
+        <div class="container">
+            <div class="row">
+                <div class="kontak-kiri">
+                    <form>
+                        <input type="text" name="Nama Lengkap" id="Nama Lengkap" placeholder="Nama Lengkap">
+                        <input type="Email" name="Email" id="Email" placeholder="Email">
+                        <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan Anda..."></textarea>
+                        <input type="submit" value="Submit" class="btn2">
+                    </form>
+                </div>
+                <div class="kontak-kanan">
+                    <h2 class="kontak-title">CONTACT US <span>.</span></h2>
+                    <p class="icon"><i class="fa-sharp fa-solid fa-phone"></i> Phone</p>
+                    <p>082258065984</p>
+                    <p class="icon"><i class="far fa-envelope"></i> Email</p>
+                    <p>rentalyuk@gmail.com</p>
+                    <p class="icon"><i class="fa-solid fa-user"></i> Sosial Media</p>
+                    <ul>
+                        <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="footer">
+        <div class="sosmed">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+        <div class="credit">&copy; <span>2023 Rental Yuk</span> | all rights reserved</div>
+    </section>
+</body>
+</html>
